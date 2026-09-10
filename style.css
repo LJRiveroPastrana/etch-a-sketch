@@ -1,0 +1,33 @@
+body{
+  display: flex;
+  margin: 60px;
+ 
+}
+.grid-container{
+   width: 70%;
+   height: 300px;
+   margin: 50px 50px auto;
+}
+.options-container{
+  margin-top: 60px;
+  width: 30%;
+  height: 490px;
+}
+  .fila {
+    display: flex; 
+  }
+  .celda {
+    width: 30px;
+    height: 30px;
+    background-color: #3498db;
+    margin: 1px; 
+  }
+  h2{
+    font-size: 32px;
+  }
+  p{
+    font-size: 14px;
+  }
+  button{
+    background-color: #3498db;
+  }
