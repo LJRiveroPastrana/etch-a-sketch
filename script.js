@@ -1,42 +1,48 @@
 
-const input = document.querySelector(".grid-value"); 
 const container = document.querySelector(".grid-container");
 const btnReset = document.querySelector(".reset");
+const opContainer = document.querySelector(".options-container")
+const btnCreate = document.createElement("button")
 
-input.addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {       
-        
-        const n = parseInt(input.value);        
-       
-        if (isNaN(n) || n < 1 || n > 16) {
-            alert("Por favor, introduce un número etre 1 y 16");
-            return;
-        }      
-        container.innerHTML = "";
+opContainer.appendChild(btnCreate);
+btnCreate.textContent = "Create"
 
-      
-        for (let i = 0; i < n; i++) {
+function createGrid(grid) {
+    
+    for (let i = 1; i <= grid; i++) {
             const fila = document.createElement("div");
             fila.classList.add("fila");
 
-            for (let j = 0; j < n; j++) {
+            for (let j = 0; j < grid; j++) {
                 const celda = document.createElement("div");
                 celda.classList.add("celda");
-                celda.dataset.fila = i;
-                celda.dataset.columna = j;
+                
                 fila.appendChild(celda);
-
-                celda.addEventListener("mouseover",()=>{
+                    celda.addEventListener("mouseover",()=>{
                     celda.style.backgroundColor = "black";
                 })
+               
             }
             container.appendChild(fila);
+
         }
-    }
-});
+};
+ createGrid(16);   
+
+
 
 btnReset.addEventListener('click',()=>{
-    container.innerHTML = "";
-    input.value  = "";
-    input.focus();
+    container.innerHTML = ""
+    createGrid(16);
 });
+btnCreate.addEventListener('click',()=>{
+    container.innerHTML = "";
+    
+   let size = parseInt(prompt("Choose the size grid (1-100):")); 
+    if (isNaN(size) || size < 1 || size > 100){
+        alert("Write a valid number fron 1 to 100")
+    }else{
+        createGrid(size);
+    }
+ });
+
